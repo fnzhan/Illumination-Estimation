@@ -23,3 +23,12 @@ If you use this code for your research, please cite our papers.
   year={2021}
 }
 ```
+
+```
+@inproceedings{zhan2021gmlight,
+  title={GMLight: Lighting Estimation via Geometric Distribution Approximation},
+  author={Zhan, Fangneng and Yu, Yingchen and Wu, Rongliang and Zhang, Changgong and Lu, Shijian},
+  booktitle={arXiv preprint arXiv},
+  year={2021}
+}
+```
