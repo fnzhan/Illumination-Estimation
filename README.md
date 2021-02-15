@@ -7,3 +7,8 @@ In AAAI 2021.
 GMLight: Lighting Estimation via Geometric Distribution Approximation. <br>
 [Fangneng Zhan](https://sites.google.com/view/fnzhan), Yingchen Yu, Rongliang Wu, Changgong Zhang, Shijian Lu. <br>
 Extended version of EMLight
+
+
+## Dataset Preparation
+
+[Laval Indoor HDR Dataset](indoor.hdrdb.com)
