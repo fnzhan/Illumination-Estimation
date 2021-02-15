@@ -1,6 +1,6 @@
 # EMLight (AAAI 2021) and GMLight
 
-<!-- EMLight: Lighting Estimation via Spherical Distribution Approximation (AAAI 2021). -->
+EMLight: Lighting Estimation via Spherical Distribution Approximation
 <!-- <br> -->
 Fangneng Zhan, Changgong Zhang, Yingchen Yu, Yuan Chang, Shijian Lu, Feiying Ma, Xuansong Xie. In AAAI 2021.
 
