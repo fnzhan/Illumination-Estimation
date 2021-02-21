@@ -55,16 +55,28 @@ def sphere_points(n=128):
     points[:, 0] = radius * np.cos(theta)
     points[:, 1] = radius * np.sin(theta)
     points[:, 2] = z
-
     # xyz = points
     # x, y, z = xyz[:, 0], xyz[:, 1], xyz[:, 2]
     return points
 
 
+def geometric_points(n=128, anchor_depth=None):
+    golden_angle = np.pi * (3 - np.sqrt(5))
+    theta = golden_angle * np.arange(n)
+    z = np.linspace(1 - 1.0 / n, 1.0 / n - 1, n)
+    radius = anchor_depth
+
+    points = np.zeros((n, 3))
+    points[:, 0] = radius * np.cos(theta)
+    points[:, 1] = radius * np.sin(theta)
+    points[:, 2] = z
+    return points
+
+
 class distance():
-    def __init__(self, batchsize=None):
+    def __init__(self, batchsize=None, geometry=None):
         self.N = 128
-        anchors = sphere_points(self.N)
+        anchors = geometric_points(self.N, geometry)
 
         anchors = torch.from_numpy(anchors).float()
         # num, _ = anchors.shape
@@ -79,10 +91,8 @@ class distance():
         anchors = anchors.unsqueeze(0)
         self.anchors = anchors.repeat(batchsize, 1, 1).cuda()
         self.M = M.repeat(batchsize, 1, 1).cuda()
-        # print (self.M)
-        # print (1/0)
 
-    def spherical_distance(self, x, y):
+    def geometric_distance(self, x, y):
         # x = torch.cat((x, self.anchors), 2)
         # y = torch.cat((y, self.anchors), 2)
         y = y.detach()
@@ -95,7 +105,6 @@ class distance():
         # print (D)
         # print (D.shape)
         # print (1/0)
-
         return D
 
 # def distances(x, y):

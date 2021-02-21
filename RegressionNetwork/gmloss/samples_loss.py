@@ -29,36 +29,26 @@ class SamplesLoss(Module):
         self.diameter = diameter
         self.scaling = scaling
 
-        self.distance = distance(batchsize=batchsize)
         # self.shperical_distance = self.distance.spherical_distance()
 
-    def forward(self, *args):
+    def forward(self, x, y, geometry):
         """Computes the loss between sampled measures.
         Documentation and examples: Soon!
         Until then, please check the tutorials :-)"""
 
-        α, x, β, y = self.process_args(*args)
+        α, x, β, y = self.process_args(x, y)
         # B, N, M, D = self.check_shapes(l_x, α, x, l_y, β, y)
         values = self.sinkhorn_tensorized(α, x, β, y, p=self.p,
                                           blur=self.blur, reach=self.reach, diameter=self.diameter,
-                                          scaling=self.scaling)
+                                          scaling=self.scaling, geometry=geometry)
 
         return values  # The user expects a "batch vector" of distances
 
-    def process_args(self, *args):
-        if len(args) == 6:
-            return args
-        if len(args) == 4:
-            α, x, β, y = args
-            return None, α, x, None, β, y
-        elif len(args) == 2:
-            x, y = args
-            α = self.generate_weights(x)
-            β = self.generate_weights(y)
-            return α, x, β, y
-        else:
-            raise ValueError(
-                "A SamplesLoss accepts two (x, y), four (α, x, β, y) or six (l_x, α, x, l_y, β, y)  arguments.")
+    def process_args(self, x, y):
+        α = self.generate_weights(x)
+        β = self.generate_weights(y)
+        return α, x, β, y
+
 
     @staticmethod
     def generate_weights(x):
@@ -76,10 +66,12 @@ class SamplesLoss(Module):
         B = C.shape[0]
         return - ε * (wlog.view(B, 1, -1) - C / ε).logsumexp(2).view(B, -1)
 
-    def sinkhorn_tensorized(self, α, x, β, y, p=2, blur=.05, reach=None, diameter=None, scaling=.5):
-        _, M, _ = y.shape
+    def sinkhorn_tensorized(self, α, x, β, y, p=2, blur=.05, reach=None, diameter=None, scaling=.5, geometry=None):
+        B, M, _ = y.shape
 
-        cost = (lambda m, n: self.distance.spherical_distance(m, n) / 2)
+        self.distance = distance(batchsize=B, geometry=geometry)
+
+        cost = (lambda m, n: self.distance.geometric_distance(m, n) / 2)
         # cost = (lambda m, n: squared_distances(m, n) / 2)
 
         C_xx, C_yy = (cost(x, x.detach()), cost(y, y.detach()))  # (B,N,N), (B,M,M)
