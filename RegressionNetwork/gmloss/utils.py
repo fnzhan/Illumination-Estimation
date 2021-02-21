@@ -63,7 +63,7 @@ def sphere_points(n=128):
 
 class distance():
     def __init__(self, batchsize=None):
-        self.N = 96
+        self.N = 128
         anchors = sphere_points(self.N)
 
         anchors = torch.from_numpy(anchors).float()
