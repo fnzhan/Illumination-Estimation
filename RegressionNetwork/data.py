@@ -46,6 +46,7 @@ class ParameterDataset(Dataset):
             'intensity': None,
             'rgb_ratio': None,
             'ambient': None,
+            'depth': None,
             'name': None}
 
         pair = self.pairs[index]
@@ -63,7 +64,10 @@ class ParameterDataset(Dataset):
         training_pair['intensity'] = torch.from_numpy(np.array(gt['intensity'])).float() * alpha / 500
         training_pair['rgb_ratio'] = torch.from_numpy(gt['rgb_ratio']).float()
         training_pair['ambient'] = torch.from_numpy(gt['ambient']).float() * alpha / (128 * 256)
+        training_pair['depth'] = torch.from_numpy(gt['depth']).float()
+
         training_pair['name'] = gt_path.split('/')[-1].split('.pickle')[0]
+
 
         # print (training_pair['intensity'], alpha)
 

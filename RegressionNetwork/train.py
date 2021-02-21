@@ -79,12 +79,12 @@ for epoch in range(0, 10000):
 
         dist_pred = dist_pred.view(-1, ln, 1)
         dist_gt = dist_gt.view(-1, ln, 1)
-        dist_emloss = GMLoss(dist_pred, dist_gt).sum() * 1000.0
+        dist_emloss = GMLoss(dist_pred, dist_gt, depth_gt).sum() * 1000.0
         dist_l2loss = l2(dist_pred, dist_gt) * 1000.0
         intensity_loss = l2(intensity_pred, intensity_gt) * 0.1
         rgb_loss = l2(rgb_ratio_pred, rgb_ratio_gt) * 100.0
         ambient_loss = l2(ambient_pred, ambient_gt) * 1.0
-        depth_loss = UGMLoss(depth_pred, depth_gt) * 1.0
+        depth_loss = UGMLoss(depth_pred, depth_gt, depth_gt) * 1.0
 
         loss = dist_emloss + dist_l2loss + intensity_loss + rgb_loss + ambient_loss + depth_loss
 
