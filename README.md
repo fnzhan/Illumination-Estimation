@@ -5,7 +5,7 @@ EMLight: Lighting Estimation via Spherical Distribution Approximation. <br>
 In AAAI 2021.
 
 GMLight: Lighting Estimation via Geometric Distribution Approximation. <br>
-[Fangneng Zhan](https://sites.google.com/view/fnzhan), Yingchen Yu, Rongliang Wu, Changgong Zhang, Shijian Lu. <br>
+[Fangneng Zhan](https://sites.google.com/view/fnzhan), Yingchen Yu, Rongliang Wu, Changgong Zhang, Shijian Lu, Ling Shao, Feiying Ma, Xuansong Xie <br>
 Extended version of EMLight
 
 
