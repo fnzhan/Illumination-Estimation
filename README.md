@@ -11,7 +11,7 @@ Extended version of EMLight
 
 ## Dataset Preparation
 
-[Laval Indoor HDR Dataset](https://indoor.hdrdb.com)
+[Laval Indoor HDR Dataset](http://indoor.hdrdb.com/#intro)
 
 ### Citation
 If you use this code for your research, please cite our papers.
