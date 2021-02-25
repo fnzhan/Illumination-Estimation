@@ -11,7 +11,7 @@ Extended version of EMLight
 
 ## Dataset Preparation
 
-[Laval Indoor HDR Dataset](indoor.hdrdb.com)
+[Laval Indoor HDR Dataset]((https://indoor.hdrdb.com)
 
 ### Citation
 If you use this code for your research, please cite our papers.
@@ -28,7 +28,7 @@ If you use this code for your research, please cite our papers.
 @inproceedings{zhan2021gmlight,
   title={GMLight: Lighting Estimation via Geometric Distribution Approximation},
   author={Zhan, Fangneng and Yu, Yingchen and Wu, Rongliang and Zhang, Changgong and Lu, Shijian and Shao, Ling and Ma, Feiying and Xie Xuansong},
-  booktitle={arXiv preprint arXiv},
+  booktitle={arXiv preprint arXiv:2102.10244},
   year={2021}
 }
 ```
