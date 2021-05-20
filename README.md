@@ -10,7 +10,7 @@ Extended version of EMLight
 
 
 ## Dataset Preparation
-[Laval Indoor HDR Dataset](http://indoor.hdrdb.com/#intro)
+[Laval Indoor HDR Dataset](http://indoor.hdrdb.com/#intro) <br>
 Thanks to the intellectual property of the Laval Indoor dataset, I cannot release the training data. Please contact the owner through above link to obtain the dataset.
 
 
